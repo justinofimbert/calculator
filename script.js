@@ -18,5 +18,6 @@ function operate(operator, a, b) {
   if (operator === "add") return add(a, b);
   else if (operator === "subtract") return subtract(a, b);
   else if (operator === "division") return division(a, b);
-  return product(a, b);
+  else if (operator === "product") return product(a, b);
+  return `operator: ${operator}, a: ${a}, b: ${b}`;
 }

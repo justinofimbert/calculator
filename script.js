@@ -21,3 +21,11 @@ function operate(operator, a, b) {
   else if (operator === "product") return product(a, b);
   return `operator: ${operator}, a: ${a}, b: ${b}`;
 }
+
+const display = document.querySelector("#display")
+
+const numberButtons = Array.from(document.querySelectorAll(".number"));
+
+numberButtons.forEach(number => number.addEventListener("click", () => {
+  display.textContent = display.textContent + number.id;
+}))

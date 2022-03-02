@@ -7,6 +7,8 @@
 }
 
 #display {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   border: solid blue 4px;
   width: 50vw;

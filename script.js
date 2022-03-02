@@ -15,17 +15,33 @@ function product(a, b) {
 }
 
 function operate(a, operator, b) {
-  if (operator === "add") return add(a, b);
-  else if (operator === "subtract") return subtract(a, b);
-  else if (operator === "division") return division(a, b);
-  else if (operator === "product") return product(a, b);
+  if (operator === "+") return add(a, b);
+  else if (operator === "-") return subtract(a, b);
+  else if (operator === "/") return division(a, b);
+  else if (operator === "x") return product(a, b);
   return `a: ${a}, operator: ${operator}, b: ${b}`;
 }
 
-const display = document.querySelector("#display")
+const currentNumber = document.querySelector("#current-number")
+const previousNumberAndOperator = document.querySelector("#previous-number-and-operator")
+const resultDisplay = document.querySelector("#result")
 
 const numberButtons = Array.from(document.querySelectorAll(".number"));
+const operatorButtons = Array.from(document.querySelectorAll("#operators button"))
+const resultButton = document.querySelector("#operate")
 
 numberButtons.forEach(number => number.addEventListener("click", () => {
-  display.textContent = display.textContent + number.id;
+  currentNumber.textContent = currentNumber.textContent + number.id;
 }))
+
+operatorButtons.forEach(operator => operator.addEventListener("click", () => {
+  // const currentNumberContent = +currentNumber.textContent;
+  previousNumberAndOperator.textContent = `${currentNumber.textContent} ${operator.textContent}`;
+  currentNumber.textContent = "";
+}))
+
+resultButton.addEventListener("click", () => {
+  const numberAndOperator = previousNumberAndOperator.textContent.split(" ")
+  resultDisplay.textContent = operate(+numberAndOperator[0], numberAndOperator[1], +currentNumber.textContent)
+})
+

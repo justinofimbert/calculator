@@ -22,25 +22,31 @@ function operate(a, operator, b) {
   return `a: ${a}, operator: ${operator}, b: ${b}`;
 }
 
-const currentNumber = document.querySelector("#current-number")
-const previousNumberAndOperator = document.querySelector("#previous-number-and-operator")
-const resultDisplay = document.querySelector("#result")
+function callOperate() {
+  // this function calls operate() on currentNumber and previousNumberAndOperator and cleans pN&O
+  const numberAndOperator = previousNumberAndOperator.textContent.split(" ");
+  currentNumber.textContent = operate(+numberAndOperator[0], numberAndOperator[1], +currentNumber.textContent);
+  previousNumberAndOperator.textContent = "";
+}
+
+const currentNumber = document.querySelector("#current-number");
+const previousNumberAndOperator = document.querySelector("#previous-number-and-operator");
 
 const numberButtons = Array.from(document.querySelectorAll(".number"));
-const operatorButtons = Array.from(document.querySelectorAll("#operators button"))
-const resultButton = document.querySelector("#operate")
+const operatorButtons = Array.from(document.querySelectorAll("#operators button"));
+const resultButton = document.querySelector("#operate");
 
 numberButtons.forEach(number => number.addEventListener("click", () => {
   currentNumber.textContent = currentNumber.textContent + number.id;
 }))
 
 operatorButtons.forEach(operator => operator.addEventListener("click", () => {
+  if (previousNumberAndOperator.textContent !== "") callOperate();
+
+  // currentNumber + operator are sent to previousNumberAndOperator text content
   previousNumberAndOperator.textContent += `${currentNumber.textContent} ${operator.textContent} `;
+
   currentNumber.textContent = "";
 }))
 
-resultButton.addEventListener("click", () => {
-  const numberAndOperator = previousNumberAndOperator.textContent.split(" ")
-  currentNumber.textContent = operate(+numberAndOperator[0], numberAndOperator[1], +currentNumber.textContent)
-  previousNumberAndOperator.textContent = ""
-})
+resultButton.addEventListener("click", callOperate);

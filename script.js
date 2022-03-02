@@ -14,12 +14,12 @@ function product(a, b) {
   return a * b;
 }
 
-function operate(operator, a, b) {
+function operate(a, operator, b) {
   if (operator === "add") return add(a, b);
   else if (operator === "subtract") return subtract(a, b);
   else if (operator === "division") return division(a, b);
   else if (operator === "product") return product(a, b);
-  return `operator: ${operator}, a: ${a}, b: ${b}`;
+  return `a: ${a}, operator: ${operator}, b: ${b}`;
 }
 
 const display = document.querySelector("#display")

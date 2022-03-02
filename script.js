@@ -17,8 +17,8 @@ function product(a, b) {
 function operate(a, operator, b) {
   if (operator === "+") return add(a, b);
   else if (operator === "-") return subtract(a, b);
-  else if (operator === "/") return division(a, b);
   else if (operator === "x") return product(a, b);
+  else if (operator === "/") return division(a, b);
   return `a: ${a}, operator: ${operator}, b: ${b}`;
 }
 
@@ -35,7 +35,6 @@ numberButtons.forEach(number => number.addEventListener("click", () => {
 }))
 
 operatorButtons.forEach(operator => operator.addEventListener("click", () => {
-  // const currentNumberContent = +currentNumber.textContent;
   previousNumberAndOperator.textContent = `${currentNumber.textContent} ${operator.textContent}`;
   currentNumber.textContent = "";
 }))
@@ -44,4 +43,3 @@ resultButton.addEventListener("click", () => {
   const numberAndOperator = previousNumberAndOperator.textContent.split(" ")
   resultDisplay.textContent = operate(+numberAndOperator[0], numberAndOperator[1], +currentNumber.textContent)
 })
-

@@ -35,11 +35,12 @@ numberButtons.forEach(number => number.addEventListener("click", () => {
 }))
 
 operatorButtons.forEach(operator => operator.addEventListener("click", () => {
-  previousNumberAndOperator.textContent = `${currentNumber.textContent} ${operator.textContent}`;
+  previousNumberAndOperator.textContent += `${currentNumber.textContent} ${operator.textContent} `;
   currentNumber.textContent = "";
 }))
 
 resultButton.addEventListener("click", () => {
   const numberAndOperator = previousNumberAndOperator.textContent.split(" ")
-  resultDisplay.textContent = operate(+numberAndOperator[0], numberAndOperator[1], +currentNumber.textContent)
+  currentNumber.textContent = operate(+numberAndOperator[0], numberAndOperator[1], +currentNumber.textContent)
+  previousNumberAndOperator.textContent = ""
 })

@@ -43,6 +43,7 @@ const numberButtons = Array.from(document.querySelectorAll(".number"));
 const operatorButtons = Array.from(document.querySelectorAll("#operators button"));
 const resultButton = document.querySelector("#operate");
 const clearButton = document.querySelector("#delete");
+const backspaceButton = document.querySelector("#backspace")
 
 // each time you click a number, the number will be concatenated to the currentNumber div
 numberButtons.forEach(number => number.addEventListener("click", () => {
@@ -65,4 +66,8 @@ resultButton.addEventListener("click", callOperate);
 clearButton.addEventListener("click", () => {
   currentNumber.textContent = "";
   previousNumberAndOperator.textContent = ""; 
+})
+
+backspaceButton.addEventListener("click", () => {
+  currentNumber.textContent = currentNumber.textContent.slice(0, -1);
 })

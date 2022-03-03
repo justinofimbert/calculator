@@ -16,8 +16,13 @@
 
 #keypad {
   display: flex;
+  flex-direction: column;
   flex: 6;
   width: 50vw;
+}
+
+#main-buttons {
+  display: flex;
 }
 
 #operators {

@@ -55,9 +55,9 @@ const previousNumberAndOperator = document.querySelector("#previous-number-and-o
 
 // buttons
 const numberButtons = Array.from(document.querySelectorAll(".number"));
-const operatorButtons = Array.from(document.querySelectorAll("#operators button"));
+const operatorButtons = Array.from(document.querySelectorAll(".operator"));
 const resultButton = document.querySelector("#result");
-const clearButton = document.querySelector("#delete");
+const clearButton = document.querySelector("#clear");
 const backspaceButton = document.querySelector("#backspace")
 
 // each time you click a number, the number will be concatenated to the currentNumber div

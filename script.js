@@ -34,6 +34,21 @@ function callOperate() {
   previousNumberAndOperator.textContent = "";
 }
 
+function pressButton(e) {
+  const keyPressed = e.key.toLowerCase();
+  const buttonPressed = document.querySelector(`button[data-key="${keyPressed}"]`);
+
+}
+
+function typeNumber(number) {
+  currentNumber.textContent = currentNumber.textContent + number;
+}
+
+function passToNextField(operator) {
+  previousNumberAndOperator.textContent += `${currentNumber.textContent} ${operator} `;
+
+  currentNumber.textContent = "";
+}
 // display parts
 const currentNumber = document.querySelector("#current-number");
 const previousNumberAndOperator = document.querySelector("#previous-number-and-operator");
@@ -41,24 +56,24 @@ const previousNumberAndOperator = document.querySelector("#previous-number-and-o
 // buttons
 const numberButtons = Array.from(document.querySelectorAll(".number"));
 const operatorButtons = Array.from(document.querySelectorAll("#operators button"));
-const resultButton = document.querySelector("#operate");
+const resultButton = document.querySelector("#result");
 const clearButton = document.querySelector("#delete");
 const backspaceButton = document.querySelector("#backspace")
 
 // each time you click a number, the number will be concatenated to the currentNumber div
-numberButtons.forEach(number => number.addEventListener("click", () => {
-  currentNumber.textContent = currentNumber.textContent + number.id;
+numberButtons.forEach(button => button.addEventListener("click", () => {
+  const number = button.textContent;
+  typeNumber(number);
+  // currentNumber.textContent = currentNumber.textContent + number;
 }))
 
-operatorButtons.forEach(operator => operator.addEventListener("click", () => {
+operatorButtons.forEach(button => button.addEventListener("click", () => {
   // if an operator is clicked when we have both numeric and operator variables available
   // then callOperate over those variables
   if (previousNumberAndOperator.textContent !== "") callOperate();
 
-  // currentNumber + operator are sent to previousNumberAndOperator text content
-  previousNumberAndOperator.textContent += `${currentNumber.textContent} ${operator.textContent} `;
-
-  currentNumber.textContent = "";
+  const operator = button.textContent;
+  passToNextField(operator);
 }))
 
 resultButton.addEventListener("click", callOperate);
@@ -71,3 +86,5 @@ clearButton.addEventListener("click", () => {
 backspaceButton.addEventListener("click", () => {
   currentNumber.textContent = currentNumber.textContent.slice(0, -1);
 })
+
+window.addEventListener("keydown", pressButton)

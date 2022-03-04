@@ -1,6 +1,7 @@
-1. add keyboard support
-2. style the page
+1. style the page
+2. fix naming conventions
 
 small bugs:
 1. give a hard limit to the amount of characters that one can input in currentNumber
 2. forbid the division by 0
+3. add the possibility of calling result with both "=" and "enter"

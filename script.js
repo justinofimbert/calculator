@@ -37,7 +37,36 @@ function callOperate() {
 function pressButton(e) {
   const keyPressed = e.key.toLowerCase();
   const buttonPressed = document.querySelector(`button[data-key="${keyPressed}"]`);
+  if (buttonPressed === null) return;
 
+  if (buttonPressed.classList.contains("number")) {
+    const number = buttonPressed.textContent;
+    typeNumber(number);
+    return;
+  }
+
+  if (buttonPressed.classList.contains("operator")) {
+    if (previousNumberAndOperator.textContent !== "") callOperate();
+
+    const operator = buttonPressed.textContent;
+    passToNextField(operator);
+    return;
+  }
+
+  if (buttonPressed.id.includes("clear")) {
+    clearDisplay();
+    return;
+  }
+
+  if (buttonPressed.id.includes("backspace")) {
+    deleteLastNumber();
+    return;
+  }
+
+  if (buttonPressed.id.includes("result")) {
+    callOperate();
+    return;
+  }
 }
 
 function typeNumber(number) {
@@ -49,6 +78,16 @@ function passToNextField(operator) {
 
   currentNumber.textContent = "";
 }
+
+function clearDisplay() {
+  currentNumber.textContent = "";
+  previousNumberAndOperator.textContent = ""; 
+}
+
+function deleteLastNumber() {
+  currentNumber.textContent = currentNumber.textContent.slice(0, -1);
+}
+
 // display parts
 const currentNumber = document.querySelector("#current-number");
 const previousNumberAndOperator = document.querySelector("#previous-number-and-operator");
@@ -56,9 +95,9 @@ const previousNumberAndOperator = document.querySelector("#previous-number-and-o
 // buttons
 const numberButtons = Array.from(document.querySelectorAll(".number"));
 const operatorButtons = Array.from(document.querySelectorAll(".operator"));
-const resultButton = document.querySelector("#result");
 const clearButton = document.querySelector("#clear");
 const backspaceButton = document.querySelector("#backspace")
+const resultButton = document.querySelector("#result");
 
 // each time you click a number, the number will be concatenated to the currentNumber div
 numberButtons.forEach(button => button.addEventListener("click", () => {
@@ -76,15 +115,10 @@ operatorButtons.forEach(button => button.addEventListener("click", () => {
   passToNextField(operator);
 }))
 
+clearButton.addEventListener("click", clearDisplay);
+
+backspaceButton.addEventListener("click", deleteLastNumber)
+
 resultButton.addEventListener("click", callOperate);
-
-clearButton.addEventListener("click", () => {
-  currentNumber.textContent = "";
-  previousNumberAndOperator.textContent = ""; 
-})
-
-backspaceButton.addEventListener("click", () => {
-  currentNumber.textContent = currentNumber.textContent.slice(0, -1);
-})
 
 window.addEventListener("keydown", pressButton)

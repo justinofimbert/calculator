@@ -5,3 +5,4 @@ small bugs:
 1. give a hard limit to the amount of characters that one can input in currentNumber
 2. forbid the division by 0
 3. add the possibility of calling result with both "=" and "enter"
+4. if NaN is currentNumber, make it so we are unable to input operations with it

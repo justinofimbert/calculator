@@ -1,5 +1,25 @@
 body {
   margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#header {
+  height: 36px;
+  width: 50vw;
+  padding: 6px 25vw;
+  background-color: hsl(214, 18%, 33%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#icon {
+  color: hsl(60, 100%, 85%);
+  font-size: 30px;
+}
+
+#author {
+  color: hsl(60, 100%, 95%);
 }
 
 #calculator {
@@ -14,6 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  box-sizing: border-box;
   border: solid blue 4px;
   width: 50vw;
 }

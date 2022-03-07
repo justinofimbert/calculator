@@ -45,6 +45,7 @@ body {
   background-color: hsl(150, 70%, 80%);
   border: solid hsl(140, 75%, 50%) 5px;
   border-radius: 8px;
+  font-size: 24px;
 }
 
 #keypad {

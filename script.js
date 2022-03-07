@@ -93,6 +93,7 @@ const currentNumber = document.querySelector("#current-number");
 const previousNumberAndOperator = document.querySelector("#previous-number-and-operator");
 
 // buttons
+const allButtons = Array.from(document.querySelectorAll("button"));
 const numberButtons = Array.from(document.querySelectorAll(".number"));
 const operatorButtons = Array.from(document.querySelectorAll(".operator"));
 const clearButton = document.querySelector("#clear");
@@ -122,3 +123,9 @@ backspaceButton.addEventListener("click", deleteLastNumber)
 resultButton.addEventListener("click", callOperate);
 
 window.addEventListener("keydown", pressButton)
+
+allButtons.forEach(button => button.addEventListener("mouseenter", () => button.classList.add("hovering")))
+allButtons.forEach(button => button.addEventListener("mouseleave", () => button.classList.remove("hovering")))
+
+allButtons.forEach(button => button.addEventListener("click", () => button.classList.add("press")))
+allButtons.forEach(button => button.addEventListener("transitionend", () => button.classList.remove("press")))

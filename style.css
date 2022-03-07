@@ -62,6 +62,7 @@ body {
 }
 
 button {
+  font-size: 24px;
   flex: 1;
   border: solid 5px hsl(240, 100%, 60%);
   background-color: hsl(200, 100%, 80%);
@@ -69,12 +70,17 @@ button {
   margin: 4px;
   box-sizing: border-box;
   border-radius: 8px;
+  transition: 0.1s;
 }
 
 #zero {
   flex: 1 0.6 27%;
 }
 
-#main-buttons {
-  display: flex;
+.hovering {
+  background-color: hsl(210, 100%, 75%);
+}
+
+.press {
+  background-color: hsl(215, 100%, 55%);
 }

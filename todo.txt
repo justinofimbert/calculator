@@ -1,5 +1,4 @@
-1. style the page
-2. fix naming conventions
+fix naming conventions
 
 small bugs:
 1. give a hard limit to the amount of characters that one can input in currentNumber

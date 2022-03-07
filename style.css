@@ -38,10 +38,10 @@ body {
   margin: 12px 5px;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  height: 12vh;
+  flex: 1.5;
   width: 50vw;
   box-sizing: border-box;
+  padding: 4px;
   background-color: hsl(150, 70%, 80%);
   border: solid hsl(140, 75%, 50%) 5px;
   border-radius: 8px;

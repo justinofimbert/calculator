@@ -35,14 +35,15 @@ body {
 }
 
 #display {
-  margin: 12px 0;
+  margin: 12px 5px;
   display: flex;
   flex-direction: column;
   flex: 1;
   height: 12vh;
   width: 50vw;
   box-sizing: border-box;
-  border: solid blue 4px;
+  background-color: hsl(150, 70%, 80%);
+  border: solid hsl(140, 75%, 50%) 5px;
   border-radius: 8px;
 }
 
@@ -52,6 +53,25 @@ body {
   flex-direction: column;
   flex: 6;
   width: 50vw;
+}
+
+#keypad div {
+  display: flex;
+  flex: 1;
+}
+
+button {
+  flex: 1;
+  border: solid 5px hsl(240, 100%, 60%);
+  background-color: hsl(200, 100%, 80%);
+  padding: 0;
+  margin: 4px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+#zero {
+  flex: 1 0.6 27%;
 }
 
 #main-buttons {

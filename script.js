@@ -38,6 +38,7 @@ function pressButton(e) {
   const keyPressed = e.key.toLowerCase();
   const buttonPressed = document.querySelector(`button[data-key="${keyPressed}"]`);
   if (buttonPressed === null) return;
+  buttonPressed.classList.add("press")
 
   if (buttonPressed.classList.contains("number")) {
     const number = buttonPressed.textContent;

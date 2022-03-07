@@ -39,9 +39,11 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 12vh;
+  width: 50vw;
   box-sizing: border-box;
   border: solid blue 4px;
-  width: 50vw;
+  border-radius: 8px;
 }
 
 #keypad {
@@ -55,6 +57,8 @@ body {
 #main-buttons {
   display: flex;
 }
+
+
 
 div .operator {
   display: flex;
